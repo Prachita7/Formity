@@ -1,0 +1,41 @@
+Formity – Customizable Form Builder
+
+Prerequisites
+- Node.js (v18 or higher)
+- npm
+- VS Code
+- PostgreSQL (local installation or cloud instance)
+- Prisma CLI
+- Git
+
+## How to Run
+
+### Backend
+cd backend  
+npm install  
+
+Create a `.env` file inside the backend folder with the following contents:
+
+DATABASE_URL="postgresql://postgres:prachita@localhost:5432/formity"
+JWT_SECRET="supersecretkey"
+PORT=5000
+
+Run Prisma migrations:
+> npx prisma migrate dev  
+
+Then start the backend server:
+> npm run dev  
+
+Backend runs on http://localhost:5000  
+
+---
+
+### Frontend
+Open a new terminal:  
+> cd frontend  
+> npm install  
+> npm run dev  
+
+Open http://localhost:5173 in your browser.
+
+Both backend and frontend must be running at the same time for the application to work properly.
