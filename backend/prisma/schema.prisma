@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  username  String   @unique
+  email     String   @unique
+  password  String
+
+  forms     Form[]
+
+  createdAt DateTime @default(now())
+}
+
+model Form {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  theme       Json?
+  questions   Json
+
+  isTemplate  Boolean  @default(false)
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
